@@ -31,7 +31,7 @@ Manage the customers who rent rooms in a hotel, each rent room needs the followi
 Requirement 1: Build the class Person to manage the personal information of the renters.  
 Requirement 2: Build the class Hotel to manage the information about the rooms in the hotel.  
 Requirement 3: Build the methods to add and delete customers by identity card number. Calculate the room rent for customers (identify customers by identity card number) based on the formula:  
-> *Total cost = number of days rented * price of each room type*.
+> *Total cost = number of days rented * price of room type*.
 
 ### 13. Exercise 13:
 

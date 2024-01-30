@@ -2,8 +2,10 @@
 
 void Fresher::showInfo()
 {
-    std::cout << "Fresher infomation\n"
-              << "ID: " << ID << '\t'
-              << "Count: " << employeeCount
-              << '\n';
+    std::cout << "Fresher:     ";
+    Employee::showInfo();
+    std::cout << "             Graduation time: " << graduationDate
+              << "\tGraduation rank: " << graduationRank
+              << "\tGraduation school: " << education
+              <<"\n\n";
 }

@@ -2,8 +2,9 @@
 
 void Experience::showInfo()
 {
-    std::cout << "Experience infomation\n"
-              << "ID: " << ID << '\t'
-              << "Count: " << employeeCount
-              << '\n';
+    std::cout << "Experience:  ";
+    Employee::showInfo();
+    std::cout << "             YoE: " << expInYear
+              << "\tProfessional: " << proSkill
+              <<"\n\n";
 }

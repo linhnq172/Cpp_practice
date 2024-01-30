@@ -2,8 +2,10 @@
 
 void Intern::showInfo()
 {
-    std::cout << "Intern infomation\n"
-              << "ID: " << ID << '\t'
-              << "Count: " << employeeCount
-              << '\n';
+    std::cout << "Intern:      ";
+    Employee::showInfo();
+    std::cout << "             Major: " << major
+              << "\tSemester: " << semester
+              << "\tUniversity: " << universityName
+              <<"\n\n";
 }

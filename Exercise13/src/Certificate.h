@@ -33,6 +33,8 @@ public:
         return certificateDate;
     }
 
+    void showCertificate();
+
 private:
     int certificateID;
     std::string certificateName;

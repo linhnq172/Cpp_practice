@@ -6,27 +6,36 @@
 int main()
 {
     std::cout << "Employee management\n";
-    std::vector<Employee*> employees;
+    std::vector<Employee *> employees;
 
-    Employee* intern = new Intern();
+    Employee *intern = new Intern();
     intern->setID("172");
     employees.push_back(intern);
-    
+
     std::vector<Certificate> certificates;
-    Employee* seniorIntern = new Intern("777", "Jack", "", "", "", EmployeeType::intern, certificates ,"", 8, "HUST");
+    Employee *seniorIntern = new Intern("777", "Jack", "", "", "", EmployeeType::intern, certificates, "", 8, "HUST");
     employees.push_back(seniorIntern);
 
-    Employee* fresher = new Fresher();
+    Employee *fresher = new Fresher();
     fresher->setID("162");
     employees.push_back(fresher);
 
-    Employee* guru = new Experience();
+    Employee *guru = new Experience();
     guru->setID("999");
     employees.push_back(guru);
-    
-    for (auto employee : employees) {
+
+    for (auto employee : employees)
+    {
         employee->showInfo();
     }
 
+    std::cout << "Employee count: " << Employee::getEmployeeCount() << "\n";
+    for (auto employee : employees)
+    {
+        delete employee;
+    }
+    
+    std::cout << "After delete\n"
+              << "Employee count: " << Employee::getEmployeeCount() << "\n";
     return 0;
 }

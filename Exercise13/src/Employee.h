@@ -79,7 +79,7 @@ public:
         certificates = value;
     }
 
-    virtual void showInfo() = 0;
+    virtual void showInfo();
 
 protected:
     std::string ID;

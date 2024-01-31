@@ -2,23 +2,22 @@
 
 void Hotel::displayInformation()
 {
-    for (int i = 0; i < totalRoom; i++)
+    for (auto room : rooms)
     {
-        (*(rooms + i))->displayInformation();
+        room->displayInformation();
     }
 }
 
 void Hotel::addCustomer(Customer *customer)
 {
     roomType desired_type = customer->getRoomType();
-    // customer->displayInformation();
-    for (int i = 0; i < totalRoom; i++)
+    for (auto room : rooms)
     {
-        roomType available_type = (*(rooms + i))->getRoomType();
-        if (available_type == desired_type && (*(rooms + i))->getCustomer() == nullptr)
+        roomType available_type = room->getRoomType();
+        if (available_type == desired_type && room->getCustomer() == nullptr)
         {
-            std::cout << "\nRoom " << 100 + i << "\n";
-            (*(rooms + i))->setCustomer(customer);
+            std::cout << "\nRoom " << room->getRoomID() << " is selected\n";
+            room->setCustomer(customer);
             break;
         }
     }
@@ -26,14 +25,15 @@ void Hotel::addCustomer(Customer *customer)
 
 void Hotel::deleteCustomer(const std::string &IDnumber)
 {
-    for (int i = 0; i < totalRoom; i++)
+    for (auto room : rooms)
     {
-        std::string ID = (*(rooms + i))->getCustomer()->getPersonalInfo()->getIDNumber();
-        if (ID == IDnumber)
+        Customer *customer = room->getCustomer();
+        if (customer != nullptr && customer->getPersonalInfo()->getIDNumber() == IDnumber)
         {
             std::cout << "Delete customer\n";
-            (*(rooms + i))->displayInformation();
-            delete *(rooms + i);
+            room->displayInformation();
+            delete room->getCustomer();
+            room->setCustomer(nullptr);
         }
     }
 }

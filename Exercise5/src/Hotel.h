@@ -1,6 +1,7 @@
 #ifndef _HOTEL_H_
 #define _HOTEL_H_
 #include "Room.h"
+#include <vector>
 
 class Hotel
 {
@@ -8,27 +9,45 @@ public:
     Hotel() = default;
     Hotel(int totalRoom) : totalRoom(totalRoom)
     {
-        rooms = (Room **)malloc(totalRoom * sizeof(Room *));
+        rooms.resize(totalRoom);
         for (int i = 0; i < totalRoom; i++)
         {
-            *(rooms + i) = new Room(100 + i);
+            rooms.at(i) = new Room(100 + i);
             if (i % 7 == 0)
             {
-                (*(rooms + i))->setRoomType(roomType::typeA);
+                rooms.at(i)->setRoomType(roomType::typeA);
             }
             else if (i % 5 == 0)
             {
-                (*(rooms + i))->setRoomType(roomType::typeB);
+                rooms.at(i)->setRoomType(roomType::typeB);
             }
         }
     }
     ~Hotel()
     {
-        for (int i = 0; i < totalRoom; i++)
+        for (auto room : rooms)
         {
-            delete *(rooms + i);
+            if (room != nullptr)
+            {
+                delete room;
+                room = nullptr;
+            }
         }
-        delete rooms;
+    }
+
+    void setTotalRoom(int x)
+    {
+        totalRoom = x;
+    }
+
+    int getTotalRoom() const
+    {
+        return totalRoom;
+    }
+
+    std::vector<Room *> getRooms()
+    {
+        return rooms;
     }
 
     void displayInformation();
@@ -37,7 +56,7 @@ public:
 
 private:
     int totalRoom = 0;
-    Room **rooms{nullptr};
+    std::vector<Room *> rooms{};
 };
 
 #endif /* _HOTEL_H_ */

@@ -18,6 +18,7 @@ void EmployeeManagement::deleteEmployee(std::string id)
 {
     for (auto it = employees.begin(); it < employees.end(); it++) {
         if ((*it)->getID() == id) {
+            delete (*it);
             employees.erase(it);
         }
     }

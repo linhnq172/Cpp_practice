@@ -1,41 +1,39 @@
 #include <iostream>
-#include "Intern.h"
-#include "Fresher.h"
-#include "Experience.h"
+#include "EmployeeManagement.h"
 
 int main()
 {
     std::cout << "Employee management\n";
-    std::vector<Employee *> employees;
+    EmployeeManagement manager = EmployeeManagement();
 
     Employee *intern = new Intern();
     intern->setID("172");
-    employees.push_back(intern);
+    manager.addEmployee(intern);
 
-    std::vector<Certificate> certificates;
+    std::vector<Certificate> certificates {};
     Employee *seniorIntern = new Intern("777", "Jack", "", "", "", EmployeeType::intern, certificates, "", 8, "HUST");
-    employees.push_back(seniorIntern);
+    manager.addEmployee(seniorIntern);
 
     Employee *fresher = new Fresher();
     fresher->setID("162");
-    employees.push_back(fresher);
+    manager.addEmployee(fresher);
 
     Employee *guru = new Experience();
     guru->setID("999");
-    employees.push_back(guru);
+    manager.addEmployee(guru);
 
-    for (auto employee : employees)
+    for (auto employee : manager.getEmployees())
     {
         employee->showInfo();
     }
 
-    std::cout << "Employee count: " << Employee::getEmployeeCount() << "\n";
-    for (auto employee : employees)
-    {
-        delete employee;
+    std::vector<Intern* > interns = manager.getInterns();
+
+    for (auto intern : interns) {
+        intern->showInfo();
     }
-    
-    std::cout << "After delete\n"
-              << "Employee count: " << Employee::getEmployeeCount() << "\n";
+
+    std::cout << "Employee count: " << Employee::getEmployeeCount() << "\n";
+
     return 0;
 }

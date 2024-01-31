@@ -15,3 +15,20 @@ void Employee::showInfo()
         certificate.showCertificate();
     }
 }
+
+void Employee::modifyInfo()
+{
+    std::string temp;
+    std::cout << "Enter fullname: ";
+    std::getline(std::cin, temp);
+    if (!temp.empty()) fullName = temp;
+    std::cout << "Enter birthday: ";
+    std::getline(std::cin, temp);
+    if (!temp.empty()) birthday = temp;
+    std::cout << "Enter phone number: ";
+    std::getline(std::cin, temp);
+    if (!temp.empty()) phone = temp;
+    std::cout << "Enter email: ";
+    std::getline(std::cin, temp);
+    if (!temp.empty()) email = temp;
+}

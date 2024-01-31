@@ -13,7 +13,7 @@ BWhite='\033[1;37m'       # White
 
 
 CXX ?= g++
-CXXFLAGS := -std=c++11 -Wall -Wextra -Werror -pedantic -g
+CXXFLAGS := -std=c++11 -Wall -Wextra -Werror -pedantic -ggdb3 -O0
 
 # path #
 SRC = src
@@ -50,6 +50,13 @@ clean:
 	@echo $(BRed)"Deleting directories"$(NC)
 	@$(RM) -r $(BUILD)/*
 	@$(RM) -r $(BIN)/*
+
+.PHONY: valgrind
+valgrind: $(BIN)/$(BIN_NAME)
+valgrind: dirs
+	@echo $(BPurple)"Memory leak check: $(BIN)/$(BIN_NAME)"$(BCyan)
+	@valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --track-origins=yes --num-callers=20 ./$(BIN)/$(BIN_NAME)
+	@echo -e $(NC)
 
 .PHONY: run
 run: $(BIN)/$(BIN_NAME)

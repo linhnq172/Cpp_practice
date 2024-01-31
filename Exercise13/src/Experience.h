@@ -30,6 +30,7 @@ public:
     void setProSkill(const std::string &skill) { proSkill = skill; }
 
     void showInfo() override;
+    void modifyInfo() override;
 
 private:
     int expInYear;

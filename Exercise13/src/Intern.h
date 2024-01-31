@@ -33,6 +33,7 @@ public:
     void setUniversityName(const std::string &name) { universityName = name; }
 
     void showInfo() override;
+    void modifyInfo() override;
 
 private:
     std::string major;

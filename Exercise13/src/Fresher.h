@@ -40,6 +40,7 @@ public:
     void setEducation(const std::string &name) { education = name; }
 
     void showInfo() override;
+    void modifyInfo() override;
 
 private:
     std::string graduationDate;

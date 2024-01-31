@@ -20,7 +20,12 @@ int main()
 
     Employee *guru = new Experience();
     guru->setID("999");
+    
     manager.addEmployee(guru);
+
+    manager.modifyEmployeeInfo("999");
+
+    manager.deleteEmployee("172");
 
     for (auto employee : manager.getEmployees())
     {

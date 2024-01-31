@@ -80,7 +80,7 @@ public:
     }
 
     virtual void showInfo();
-    void modifyInfo();
+    virtual void modifyInfo();
 
 protected:
     std::string ID;

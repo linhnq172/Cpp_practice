@@ -18,6 +18,7 @@ void Employee::showInfo()
 
 void Employee::modifyInfo()
 {
+    std::cout << "Employee edit\n";
     std::string temp;
     std::cout << "Enter fullname: ";
     std::getline(std::cin, temp);

@@ -16,6 +16,7 @@ CXX ?= g++
 CXXFLAGS := -std=c++11 -Wall -Wextra -Werror -pedantic -ggdb3 -O0
 
 # path #
+INC = inc
 SRC = src
 BUILD = build
 BIN = bin
@@ -30,7 +31,7 @@ OBJS = $(SRCS:$(SRC)/%.cpp=$(BUILD)/%.o)
 
 # flags #
 RELEASE_FLAGS = -std=c++11 -Wall -Wextra
-INCS = -I $(SRC)
+INCS = -I $(INC)
 LIBS = -lstdc++ -lm
 
 .PHONY: default

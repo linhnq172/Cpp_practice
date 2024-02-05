@@ -25,6 +25,7 @@ int main()
     h->displayInformation();
 
     h->deleteCustomer("004230028276");
+    std::cout << "Hotel after delete\n";
     h->displayInformation();
 
     delete h;

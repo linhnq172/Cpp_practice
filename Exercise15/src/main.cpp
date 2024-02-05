@@ -2,7 +2,10 @@
 #include "University.h"
 
 int main() {
-    University* university = new University();
-    delete university;
+    std::vector<Student*> students {};
+    Department* department = new Department(students, "Telecommunication");
+    std::cout << department->getName();
+    delete department;
+
     return 0;
 }

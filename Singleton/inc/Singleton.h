@@ -29,7 +29,7 @@ public:
     int getNumber() { return number; }
 
 private:
-    Singleton(int number) : number(number){};
+    Singleton(int number) : number(number) {};
     static Singleton *instance;
     int number = 0;
 };

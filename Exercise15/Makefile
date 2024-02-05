@@ -13,9 +13,10 @@ BWhite='\033[1;37m'       # White
 
 
 CXX ?= g++
-CXXFLAGS := -std=c++11 -Wall -Wextra -Werror -pedantic -g
+CXXFLAGS := -std=c++11 -Wall -Wextra -Werror -pedantic -ggdb3 -O0
 
 # path #
+INC = inc
 SRC = src
 BUILD = build
 BIN = bin
@@ -30,7 +31,7 @@ OBJS = $(SRCS:$(SRC)/%.cpp=$(BUILD)/%.o)
 
 # flags #
 RELEASE_FLAGS = -std=c++11 -Wall -Wextra
-INCS = -I $(SRC)
+INCS = -I $(INC)
 LIBS = -lstdc++ -lm
 
 .PHONY: default
@@ -50,6 +51,17 @@ clean:
 	@echo $(BRed)"Deleting directories"$(NC)
 	@$(RM) -r $(BUILD)/*
 	@$(RM) -r $(BIN)/*
+
+.PHONY: valgrind
+valgrind: $(BIN)/$(BIN_NAME)
+valgrind: dirs
+	@echo $(BPurple)"Memory leak check: $(BIN)/$(BIN_NAME)"$(BCyan)
+	@valgrind --tool=memcheck --leak-check=yes --show-reachable=yes --track-origins=yes --num-callers=20 ./$(BIN)/$(BIN_NAME)
+	@echo -e $(NC)
+
+# valgrind option --track-fds=yes
+# -v for more detail
+# 
 
 .PHONY: run
 run: $(BIN)/$(BIN_NAME)
